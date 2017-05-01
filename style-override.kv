@@ -1,0 +1,20 @@
+#:import hex kivy.utils.get_color_from_hex
+
+<SettingInfo>:
+    text_size: self.width - 32, None
+    size_hint_y: None
+    height: max(dp(20), self.texture_size[1] + dp(20))
+    color: 1, 0.973, 0.004, 1
+    font_size: '15sp'
+    canvas:
+        Color:
+            rgba: .15, .15, .15, .5
+        Rectangle:
+            pos: self.x, self.y + 2
+            size: self.width, self.height - 2
+        Color:
+            rgb: .2, .2, .2
+        Rectangle:
+            pos: self.x, self.y - 2
+            size: self.width, 1
+            

@@ -1,0 +1,27 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: SelfcheckApp\n"
+"POT-Creation-Date: 2017-05-01 19:28+0200\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Tobias Zeumer <tobias.zeumer@tuhh.de>\n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-Basepath: ../../../..\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 2.0.1\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: __pycache__\n"
+"X-Poedit-SearchPathExcluded-1: _USE LATER\n"
+"X-Poedit-SearchPathExcluded-2: lib_later\n"
+
+#: main.py:173 main.py:190
+msgid "Language"
+msgstr "Language"
+
+#: main.py:191
+msgid "Choose your language"
+msgstr ""

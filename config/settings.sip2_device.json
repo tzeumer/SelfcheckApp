@@ -1,0 +1,51 @@
+[
+    { "type": "title",
+      "title": "Credentials"
+    },
+
+    { "type": "string",
+      "title": "Login Name",
+      "desc": "Library system user",
+      "section": "sip2Params",
+      "key": "ils_user"
+    },
+
+    { "type": "string",
+      "title": "Login Password",
+      "desc": "Library system user password",
+      "section": "sip2Params",
+      "key": "ils_pass"
+    },
+
+    { "type": "title",
+      "title": "Self Check Device (cosmetic settings)"
+    },
+
+    { "type": "string",
+      "title": "Language",
+      "desc": "Which is the default language to request from SIP2 Server (and this device)? TODO: USE CODES",
+      "section": "sip2Params",
+      "key": "language"
+    },
+
+    { "type": "string",
+      "title": "Institution Name",
+      "desc": "The name of your institution",
+      "section": "sip2Params",
+      "key": "institutionId"
+    },
+
+    { "type": "string",
+      "title": "Device Name",
+      "desc": "The name of this selfcheck device (or its location)",
+      "section": "sip2Params",
+      "key": "scLocation"
+    },
+
+    { "type": "string",
+      "title": "Terminal Password",
+      "desc": "Pretty unlikely you have to set anything here...",
+      "section": "sip2Params",
+      "key": "terminalPassword"
+    }
+]

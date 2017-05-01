@@ -1,0 +1,157 @@
+[
+    { "type": "title",
+      "title": "SIP2 Supported Actions (Override possible)"
+    },
+
+    { "type": "info",
+      "title": "Settings are fetched when the connection to the server is established. You can disable settings, that the server supports (basically and policy) but that you don't want to use. But not vice versa (enable something the server does not support)."
+    },
+    
+    { "type": "bool",
+      "title": "Checkout",
+      "desc": "Device can checkout items",
+      "section": "sip2Rules",
+      "key": "1"
+    },
+
+    { "type": "bool",
+      "title": "Checkin",
+      "desc": "Device can checkin items",
+      "section": "sip2Rules",
+      "key": "2"
+    },
+  
+    { "type": "bool",
+      "title": "Fee Paid",
+      "desc": "Fees can be paid on the device, server supports it.",
+      "section": "sip2Rules",
+      "key": "9"
+    },
+
+    { "type": "bool",
+      "title": "Renew",
+      "desc": "Device can renew an single item.",
+      "section": "sip2Rules",
+      "key": "14"
+    },
+
+    { "type": "bool",
+      "title": "Renew All",
+      "desc": "Device can renew all items.",
+      "section": "sip2Rules",
+      "key": "15"
+    },
+  
+    { "type": "title",
+      "title": "SIP2 Supported Actions (autoconfigured)"
+    },
+
+    { "type": "info",
+      "title": "These settings cannot be changed, they are fetched from the server. Some settings must be supported by the server, otherwise this (or any) app wouldn't make much sense. Other settings, like Block Patron, are too outlandish to be supported in this app."
+    },
+    
+    { "type": "bool",
+      "title": "Patron Status Request",
+      "desc": "Device can request patron status",
+      "section": "sip2Rules",
+      "key": "0",
+      "disabled": 1
+    },
+
+    { "type": "bool",
+      "title": "SC/ACS Status",
+      "desc": "Device can request settings for all these rules. If not, this app will not work.",
+      "section": "sip2Rules",
+      "key": "4",
+      "disabled": 1
+    },
+
+    { "type": "bool",
+      "title": "Request SC/ACS Resend",
+      "desc": "Device can requests from servver to re-transmit its last message if the checksum in a received message does not match the value calculated",
+      "section": "sip2Rules",
+      "key": "5",
+      "disabled": 1
+    },
+
+    { "type": "bool",
+      "title": "Login",
+      "desc": "Allow login to server (\"Whether to use this message or to use some other mechanism to login to the ACS is configurable on the SC.\")",
+      "section": "sip2Rules",
+      "key": "6",
+      "disabled": 1
+    },
+
+    { "type": "bool",
+      "title": "Patron Information",
+      "desc": "This message is a superset of the Patron Status Request.",
+      "section": "sip2Rules",
+      "key": "7",
+      "disabled": 1
+    },
+
+    { "type": "bool",
+      "title": "End Patron Session",
+      "desc": "Device can send command to end patron session to server.",
+      "section": "sip2Rules",
+      "key": "8",
+      "disabled": 1
+    },
+
+    { "type": "bool",
+      "title": "Item Information",
+      "desc": "Device can request item information.",
+      "section": "sip2Rules",
+      "key": "10",
+      "disabled": 1
+    },
+    
+    { "type": "bool",
+      "title": "Item Status Update",
+      "desc": "Device can update item status without a checkin or checkout action.",
+      "section": "sip2Rules",
+      "key": "11",
+      "disabled": 1
+    },
+
+    { "type": "bool",
+      "title": "Hold",
+      "desc": "Device can create, modify, or delete a hold.",
+      "section": "sip2Rules",
+      "key": "13",
+      "disabled": 1
+    },
+    
+    { "type": "title",
+      "title": "SIP2 Supported Actions (autoconfigured special note)"
+    },
+
+    { "type": "info",
+      "title": "These three settings are real good candidates to circumvent the main problem of offline checkouts (network outage): a blocked user might borrow something. Were this settings available such a patron could be temporarily unblocked to process this checkout anyway when the connection is available again. Unfortunatley this app can't implement such a mechanism, because no available server supports this."
+    },
+
+    { "type": "bool",
+      "title": "Offline ok",
+      "desc": "ILS and SIP2 server support the off-line operation feature. The ILS must also support no block charge requests when it comes back on-line.",
+      "section": "sip2Rules",
+      "key": "OfflineOk",
+      "disabled": 1
+    },
+
+    { "type": "bool",
+      "title": "Block Patron",
+      "desc": "Device can block patron account",
+      "section": "sip2Rules",
+      "key": "3",
+      "disabled": 1
+    },
+
+    { "type": "bool",
+      "title": "Patron Enable",
+      "desc": "Device can unblock a patron.",
+      "section": "sip2Rules",
+      "key": "12",
+      "disabled": 1
+    }
+
+]

@@ -1,0 +1,70 @@
+#:import _ localization._
+
+<Selfcheck>:
+    GridLayout:
+        rows: 2
+        BoxLayout:
+            padding: '2sp'
+            canvas:
+                Color:
+                    rgba: 1, 1, 1, .6
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+            size_hint: 1, None
+            height: '45sp'
+            Widget:
+            BoxLayout:
+                size_hint: None, 1
+                width: '150sp'
+                Label:
+                    text: _("Autoconnect")
+                CheckBox:
+                    id: sip2_btn_autologin
+                    active: False
+                    size_hint_x: 1
+            ToggleButton:
+                id: tgl_btn_connection
+                size_hint_y: None
+                height: '48dp'
+                text: _('Connect')
+                on_press: self.text = 'Connecting ...'; root.status_toggle_btn(tgl_btn_connection, 'tgl_btn_connection')
+                group: 'test'
+        BoxLayout:
+            id: reactive_layout
+            orientation: 'vertical' if self.width < self.height else 'horizontal'
+
+            Splitter:
+                id: editor_pane
+                max_size: (reactive_layout.height if self.vertical else reactive_layout.width) - self.strip_size
+                min_size: sp(30) + self.strip_size
+                vertical: 1 if reactive_layout.width < reactive_layout.height else 0
+                sizable_from: 'bottom' if self.vertical else 'right'
+                size_hint: (1, None) if self.vertical else (None, 1)
+                size: 400, 400
+                on_vertical:
+                    mid_size = self.max_size/2
+                    if args[1]: self.height = mid_size
+                    if not args[1]: self.width = mid_size
+                Label:
+                    id: scr_selfcheck_left
+                    text: _('Left')
+
+            ScrollView:
+                id: scr_selfcheck_right
+                Label:
+                    id: scr_selfcheck_left
+                    text: _('Right')
+
+                    
+<Error>:
+    BoxLayout:
+        orientation: 'vertical'
+
+        Label:
+            text: "Error. Not connected"
+            font_size: 32
+        Button:
+            text: "Return"
+            font_size: 24
+            on_press: root.goLogin()
