@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Project SYSTEM "Project-5.1.dtd">
+<!-- eric project file for project GossipGUI -->
+<!-- Saved: 2017-05-05, 17:19:24 -->
+<!-- Copyright (C) 2017 ,  -->
+<Project version="5.1">
+  <Language>en_US</Language>
+  <Hash>4ad2738e8304f6eddfe309d9d05fdb2d4fc255fc</Hash>
+  <ProgLanguage mixed="0">Python3</ProgLanguage>
+  <ProjectType>PyQt5</ProjectType>
+  <Version>0.1</Version>
+  <Author></Author>
+  <Email></Email>
+  <Eol index="0"/>
+  <Sources>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/conf.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/test/test_docs.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/test/test_documentation_sources_exist.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/test/test_sphinx_build.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/AYABKnitSettings.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/AYABKnitter.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/EditorWindow.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/InstructionSVGWidgetCache.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/IntInput.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/KnittingPatternWidget.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/__init__.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/__main__.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/dialogs.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/localization/__init__.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/localization/observable_translation.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/localization/test/test_localization.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/localization/test/test_translations.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/settings.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/test/conftest.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/test/test_can_import.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/mac-build/_KnitEditor.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/setup.py</Source>
+    <Source>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/windows-build/KnitEditor.py</Source>
+    <Source>__init__.py</Source>
+    <Source>connected.py</Source>
+    <Source>lib_later/sip2/Tests/sip2_class.py</Source>
+    <Source>lib_later/sip2/__init__.py</Source>
+    <Source>lib_later/sip2/message_lookup.py</Source>
+    <Source>lib_later/sip2/sip2.py</Source>
+    <Source>lib_later/sip2/wrapper.py</Source>
+    <Source>localization/__init__.py</Source>
+    <Source>localization/observable_translation.py</Source>
+    <Source>localization/test/test_localization.py</Source>
+    <Source>localization/test/test_translations.py</Source>
+    <Source>login.py</Source>
+    <Source>main.py</Source>
+    <Source>selfcheck.py</Source>
+    <Source>settings.py</Source>
+  </Sources>
+  <Forms/>
+  <Translations>
+    <Translation>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/localization/translations/de/LC_MESSAGES/kniteditor.po</Translation>
+    <Translation>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/localization/translations/en/LC_MESSAGES/kniteditor.po</Translation>
+    <Translation>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/localization/translations/languages/LC_MESSAGES/languages.po</Translation>
+    <Translation>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/localization/translations/ru/LC_MESSAGES/kniteditor.po</Translation>
+    <Translation>localization/translations/de/LC_MESSAGES/selfcheckapp.po</Translation>
+    <Translation>localization/translations/en/LC_MESSAGES/selfcheckapp.po</Translation>
+    <Translation>localization/translations/languages/LC_MESSAGES/languages.po</Translation>
+  </Translations>
+  <Resources/>
+  <Interfaces/>
+  <Others>
+    <Other>README.md</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/CONTRIBUTING.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/DeveloperCertificateOfOrigin.txt</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/README.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/assets/README.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/dev-requirements.txt</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/DevelopmentSetup.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/FileFormatSpecification.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/Installation.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/Translate.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/index.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/reference/index.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/reference/kniteditor/AYABKnitSettings.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/reference/kniteditor/AYABKnitter.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/reference/kniteditor/EditorWindow.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/reference/kniteditor/InstructionSVGWidgetCache.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/reference/kniteditor/IntInput.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/reference/kniteditor/KnittingPatternWidget.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/reference/kniteditor/__main__.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/reference/kniteditor/dialogs.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/reference/kniteditor/index.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/reference/kniteditor/localization/index.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/reference/kniteditor/localization/observable_translation.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/docs/reference/kniteditor/settings.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/editorwindow.kv</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/kniteditor/localization/translations/README.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/mac-build/README.rst</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/requirements.txt</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/test-requirements.txt</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/windows-build/Inno Setup 5/Examples/ISPPExample1License.txt</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/windows-build/Inno Setup 5/Examples/Readme-Dutch.txt</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/windows-build/Inno Setup 5/Examples/Readme-German.txt</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/windows-build/Inno Setup 5/Examples/Readme.txt</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/windows-build/Inno Setup 5/license.txt</Other>
+    <Other>_USE LATER/kniteditor-master - LANGUAGE and BEST-PRACTISE-FOLDER-ORGANIZING/kniteditor-master/windows-build/README.rst</Other>
+    <Other>connected.kv</Other>
+    <Other>localization/translations/README.rst</Other>
+    <Other>login.kv</Other>
+    <Other>readme.txt</Other>
+    <Other>selfcheck.kv</Other>
+    <Other>style-override.kv</Other>
+  </Others>
+  <Vcs>
+    <VcsType>None</VcsType>
+  </Vcs>
+  <FiletypeAssociations>
+    <FiletypeAssociation pattern="*.e4p" type="OTHERS"/>
+    <FiletypeAssociation pattern="*.idl" type="INTERFACES"/>
+    <FiletypeAssociation pattern="*.kv" type="OTHERS"/>
+    <FiletypeAssociation pattern="*.md" type="OTHERS"/>
+    <FiletypeAssociation pattern="*.po" type="TRANSLATIONS"/>
+    <FiletypeAssociation pattern="*.py" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.py3" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.pyw" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.pyw3" type="SOURCES"/>
+    <FiletypeAssociation pattern="*.qm" type="TRANSLATIONS"/>
+    <FiletypeAssociation pattern="*.qrc" type="RESOURCES"/>
+    <FiletypeAssociation pattern="*.rst" type="OTHERS"/>
+    <FiletypeAssociation pattern="*.ts" type="TRANSLATIONS"/>
+    <FiletypeAssociation pattern="*.txt" type="OTHERS"/>
+    <FiletypeAssociation pattern="*.ui" type="FORMS"/>
+    <FiletypeAssociation pattern="README" type="OTHERS"/>
+    <FiletypeAssociation pattern="README.*" type="OTHERS"/>
+  </FiletypeAssociations>
+</Project>

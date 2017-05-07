@@ -23,6 +23,12 @@
                     id: sip2_btn_autologin
                     active: False
                     size_hint_x: 1
+            Button:
+                id: btn_get_itemInformation
+                size_hint_y: None
+                height: '48dp'
+                text: _('TestButton')
+                on_press: root.btn_get_item_information()
             ToggleButton:
                 id: tgl_btn_connection
                 size_hint_y: None

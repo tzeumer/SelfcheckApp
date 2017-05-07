@@ -23,8 +23,44 @@ Kivy-App
 1. Add Gossip
 
 
+GetText
+------------
+Search: _\(['"].*?['"]\)
+
+
+
+
 Compile
 0. pip install --upgrade pyinstaller
 1. cd C:\ProgrammePortable\!_NoSync\Seafile\Filesafe\Development\Python\GossipGUI.build
 2. Anleitung unter https://kivy.org/docs/guide/packaging-windows.html lesen (wird standard riesig...?)
 3. python -m PyInstaller --name touchtracer C:\ProgrammePortable\!_NoSync\Seafile\Filesafe\Development\Python\GossipGUI\gossip.py
+
+
+
+
+
+IDEs (beside Liclipse)
+
+  ERIC install
+  ----
+  - (Winpython cmd)
+  - python pip3 install QScintilla
+  - https://eric-ide.python-projects.org/eric-download.html
+  - python T:\ProgrammePortable\_Development\eric6-17.04.1\install.py
+  - python T:\ProgrammePortable\_Development\eric6-17.04.1\eric\eric6.py
+  
+  
+  Ninja-IDE
+  ----
+  - http://ninja-ide.org/
+  
+  
+  SPE IDE - Stani's Python Editor
+  ----
+  - https://sourceforge.net/projects/spe/?source=recommended
+  
+  
+  PyCharm
+  ---- 
+  - https://www.jetbrains.com/pycharm/

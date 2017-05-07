@@ -81,13 +81,13 @@ class Selfcheck(Screen):
             #pprint (self.wrapper.return_sc_status())
         except Exception as ex:
             print(ex)
-            print("Connection failed. Please check log and config")
+            print(_("Connection failed. Please check log and config"))
             myAction = 'error'
             return False
         except SystemExit as ex:
             # Real connection problem - set pretty (too?) hard with sys.exit in sip2 class
             print(ex)        
-            self.ids.scr_selfcheck_left.text = "Cannot connect to server"
+            self.ids.scr_selfcheck_left.text = _("Cannot connect to server")
             return False
         
         # Now Login
@@ -96,10 +96,13 @@ class Selfcheck(Screen):
             print (self.wrapper.return_log())
         except Exception as ex:
             print(ex)
-            print("Login failed. Please check config")
+            print(_("Login failed. Please check config"))
             return False
 
         # Get possible commands
+        # @todo: make _command_available public or add get method in Sip2;
+        #        also refactor logging ("Server does not support command ...") 
+        #        for such checks
         # @note: convert to int because configuration does not accept True/False
         # @note: the _supported_ commands may be disabled by policy; check below
         for msg_id in range(0, 15):
@@ -111,8 +114,7 @@ class Selfcheck(Screen):
             else:
                 self.app.config.set('sip2Rules', str(msg_id), msg_val)
                 
-        # Apply policy (that may be more restrictive than what's supported)
-        #pprint (self.wrapper._scStatus)
+        # Apply SIP2 policies (that may be more restrictive than what's supported)
         if (self.wrapper.return_sc_status()['fixed']['AcsRenewalPolicy'] == 'N'):
             self.app.config.set('sip2Rules', '14', 0)
             self.app.config.set('sip2Rules', '15', 0)
@@ -129,17 +131,49 @@ class Selfcheck(Screen):
         #    self.app.config.set('sip2Params', 'socketTimeout', int(self.wrapper._scStatus['fixed']['TimeoutPeriod']))
         if (int(self.app.config.get('sip2Params', 'maxretry')) > int(self.wrapper.return_sc_status()['fixed']['RetriesAllowed'])):
             self.app.config.set('sip2Params', 'maxretry', int(self.wrapper.return_sc_status()['fixed']['RetriesAllowed']))
+        
+
+        # Adjust special Gossip policies. Disable what logically cannot be true.
+        # int() feels more true than '0'... hmm
+        current_version = self.app.config.get('sip2Params', 'version')
+        if (current_version != 'Gossip' or self.app.config.getint('sip2Rules', '2') == 0):
+            # No isn't exactly right, but keep in mind, that these settings are only Gossip specific. No means it is disabled.
+            self.app.config.set('sip2RulesGossip', 'commitReservation', 0)
+            # @note immer vorm ausleihen checken, ob reserviert (wie Bibliotheca) 
+            self.app.config.set('sip2RulesGossip', 'alertReservation', 0)
+        if (current_version != 'Gossip' or self.app.config.getint('sip2Rules', '14') == 0 or self.app.config.getint('sip2Rules', '15') == 0):
+            self.app.config.set('sip2RulesGossip', 'thirdPartyRenewal', 0)
+        if (current_version != 'Gossip' or self.app.config.getint('sip2Rules', '9') == 0):
+            self.app.config.set('sip2RulesGossip', 'subtotalPayment', 0)
+            self.app.config.set('sip2RulesGossip', 'partialFeePayment', 0)
+        if (current_version != 'Gossip'):
+            self.app.config.set('sip2RulesGossip', 'languageSwitch', 0)
+        if (current_version != 'Gossip' or self.app.config.getint('sip2Rules', '10') == 0):
+            self.app.config.set('sip2RulesGossip', 'provideItemProperties', 0)
+
+        pprint (self.wrapper._scStatus)
             
         # save the config, otherwise it will be reset to defaults on next app start
         self.app.config.write()  
         # Destroy setting, so the new settings are actually shown (before an app restart)
+        # Might result in ignored exception on app exit (if config is not opened before again)...
         self.app.destroy_settings()
+        
+        # Got all the way down here? Return True
+        return True
 
     def disconnect(self):
         self.wrapper.disconnect()
         print (self.wrapper._connected)
         print (self.wrapper.return_log())
-        # red indicator: self.ids.balbalb 
+        # red indicator: self.ids.balbalb
+
+    def btn_get_item_information(self):
+        try:
+            blub = self.wrapper.sip_item_information('830$28479309')
+            pprint (blub)
+        except Exception as ex:
+            print(self.wrapper.return_log())
                 
     def status_toggle_btn(self, btn, id):
         """
@@ -149,15 +183,15 @@ class Selfcheck(Screen):
         if id == 'tgl_btn_connection' and btn.state == 'down':
             #self.ids.tgl_btn_connection.text = 'Disconnect' if self.connect() else 'Connect'
             status = self.connect()
-            self.ids.tgl_btn_connection.text = 'Disconnect' if status else 'Connect'
+            self.ids.tgl_btn_connection.text = _('Disconnect') if status == True else _('Connect')
             if status == False:
                 btn.state = 'normal'
         elif id == 'tgl_btn_connection' and btn.state == 'normal':
             self.disconnect()
-            self.ids.tgl_btn_connection.text = 'Connect'
+            self.ids.tgl_btn_connection.text = _('Connect')
             
         #print('button state is: {state}'.format(state=btn.state))
-        #print('text input text is: {txt}'.format(txt=self.txt_inpt))
+        #print('text input text is: {txt}'.format(txt=self.ids.tgl_btn_connection.text))
         
 
 class xxx(Screen):

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: SelfcheckApp\n"
-"POT-Creation-Date: \n"
+"POT-Creation-Date: 2017-05-07 16:05+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Tobias Zeumer\n"
 "Language-Team: \n"
@@ -18,50 +18,512 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-1: _USE LATER\n"
 "X-Poedit-SearchPathExcluded-2: lib_later\n"
 
+#: main.py:168
+msgid "SIP2 (Server)"
+msgstr "SIP2 (Server)"
+
+#: main.py:169
+msgid "SIP2 (Device)"
+msgstr "SIP2 (Gerät)"
+
+#: main.py:170
+msgid "SIP2 (Rules)"
+msgstr "SIP2 (Regeln)"
+
+#: main.py:171
+msgid "SIP2 (Gossip)"
+msgstr "SIP2 (Gossip)"
+
+#: main.py:172
+msgid "MyApp"
+msgstr ""
+
+#: main.py:173 main.py:239 main.py:401
 msgid "Language"
 msgstr "Sprache"
 
+#: main.py:240
 msgid "Choose your language"
 msgstr "Sprache wählen"
 
-msgid "Autoconnect"
+#: main.py:257
+msgid "Version"
+msgstr "Version"
+
+#: main.py:261
+msgid "SIP2 Version"
+msgstr "SIP2 Version"
+
+#: main.py:262
+msgid "SIP2 standard or Gossip?"
+msgstr "SIP2 standard oder Gossip?"
+
+#: main.py:269
+msgid "Connection Settings"
+msgstr "Verbindungseinstellungen"
+
+#: main.py:273
+msgid "Host Name"
+msgstr ""
+
+#: main.py:274
+msgid ""
+"Sip2 server name. It MUST be a name if TLS is enabled. Otherwise an IP is "
+"ok, too."
+msgstr ""
+
+#: main.py:280
+msgid "Host Port"
+msgstr ""
+
+#: main.py:281
+msgid "SIP2-Port"
+msgstr ""
+
+#: main.py:287
+msgid "Connection Timeout"
+msgstr ""
+
+#: main.py:288
+msgid ""
+"How many seconds until connection attempt will be aborted. Default 3 (if you "
+"set a higher value, it might automatically be reduced to the maximum the "
+"server supports)."
+msgstr ""
+
+#: main.py:294
+msgid "TLS"
+msgstr ""
+
+#: main.py:295
+msgid "Use encrpyted connection"
+msgstr ""
+
+#: main.py:301
+msgid "TLS - allow selfsigned"
+msgstr ""
+
+#: main.py:302
+msgid "If TLS is enabled, allow selfsigned certificate from server?"
+msgstr ""
+
+#: main.py:308
+msgid "Encoding"
+msgstr ""
+
+#: main.py:309
+msgid "Which encoding does the server use"
+msgstr ""
+
+#: main.py:315
+msgid "Expert Setting (highly unlikely any adjustments are required)"
+msgstr ""
+
+#: main.py:319
+msgid "Maximum Retries For Sending SIP2-Message"
+msgstr ""
+
+#: main.py:320
+msgid ""
+"Maximum number of resends allowed before we give up. Note: this is pretty "
+"much a relict from pre tcp times"
+msgstr ""
+
+#: main.py:326
+msgid "Field terminator"
+msgstr ""
+
+#: main.py:327
+msgid "SIP2 field terminator"
+msgstr ""
+
+#: main.py:333
+msgid "Message terminator"
+msgstr ""
+
+#: main.py:334
+msgid "SIP2 message terminator"
+msgstr ""
+
+#: main.py:341
+msgid "Set CRC"
+msgstr ""
+
+#: main.py:342
+msgid "Toggle crc checking and appending for SIP2 messages."
+msgstr ""
+
+#: main.py:348
+msgid "Set Sequence Numbers"
+msgstr ""
+
+#: main.py:349
+msgid "Toggle the use of sequence numbers"
+msgstr ""
+
+#: main.py:355
+msgid "Login Encryption Algorithm"
+msgstr ""
+
+#: main.py:356
+msgid "Login encryption algorithm type (0 = plain text)"
+msgstr ""
+
+#: main.py:362
+msgid "Password Encryption Algorithm"
+msgstr ""
+
+#: main.py:363
+msgid "Password encryption algorithm type (undocumented)"
+msgstr ""
+
+#: main.py:379
+msgid "Credentials"
+msgstr ""
+
+#: main.py:383
+msgid "Login Name"
+msgstr ""
+
+#: main.py:384
+msgid "Library system user"
+msgstr ""
+
+#: main.py:390
+msgid "Login Password"
+msgstr ""
+
+#: main.py:391
+msgid "Library system user password"
+msgstr ""
+
+#: main.py:397
+msgid "Self Check Device (cosmetic settings)"
+msgstr ""
+
+#: main.py:402
+msgid ""
+"Which is the default language to request from SIP2 Server (and this device)? "
+"TODO: USE CODES"
+msgstr ""
+
+#: main.py:408
+msgid "Institution Name"
+msgstr ""
+
+#: main.py:409
+msgid "The name of your institution"
+msgstr ""
+
+#: main.py:415
+msgid "Device Name"
+msgstr ""
+
+#: main.py:416
+msgid "The name of this selfcheck device (or its location)"
+msgstr ""
+
+#: main.py:422
+msgid "Terminal Password"
+msgstr ""
+
+#: main.py:423
+msgid "Pretty unlikely you have to set anything here..."
+msgstr ""
+
+#: main.py:439
+msgid "SIP2 Supported Actions (Override possible)"
+msgstr ""
+
+#: main.py:443
+msgid ""
+"Settings are fetched when the connection to the server is established. You "
+"can disable settings, that the server supports (basically and policy) but "
+"that you don't want to use. But not vice versa (enable something the server "
+"does not support)."
+msgstr ""
+
+#: main.py:447
+msgid "Checkout"
+msgstr ""
+
+#: main.py:448
+msgid "Device can checkout items"
+msgstr ""
+
+#: main.py:454
+msgid "Checkin"
+msgstr ""
+
+#: main.py:455
+msgid "Device can checkin items"
+msgstr ""
+
+#: main.py:461
+msgid "Fee Paid"
+msgstr ""
+
+#: main.py:462
+msgid "Fees can be paid on the device, server supports it."
+msgstr ""
+
+#: main.py:468
+msgid "Renew"
+msgstr ""
+
+#: main.py:469
+msgid "Device can renew an single item."
+msgstr ""
+
+#: main.py:475
+msgid "Renew All"
+msgstr ""
+
+#: main.py:476
+msgid "Device can renew all items."
+msgstr ""
+
+#: main.py:482
+msgid "SIP2 Supported Actions (autoconfigured)"
+msgstr ""
+
+#: main.py:486
+msgid ""
+"These settings cannot be changed, they are fetched from the server. Some "
+"settings must be supported by the server, otherwise this (or any) app "
+"wouldn't make much sense. Other settings, like Block Patron, are too "
+"outlandish to be supported in this app."
+msgstr ""
+
+#: main.py:490
+msgid "Patron Status Request"
+msgstr ""
+
+#: main.py:491
+msgid "Device can request patron status"
+msgstr ""
+
+#: main.py:498
+msgid "SC/ACS Status"
+msgstr ""
+
+#: main.py:499
+msgid ""
+"Device can request settings for all these rules. If not, this app will not "
+"work."
+msgstr ""
+
+#: main.py:506
+msgid "Request SC/ACS Resend"
+msgstr ""
+
+#: main.py:507
+msgid ""
+"Device can requests from servver to re-transmit its last message if the "
+"checksum in a received message does not match the value calculated"
+msgstr ""
+
+#: main.py:514
+msgid "Login"
+msgstr ""
+
+#: main.py:515
+msgid ""
+"Allow login to server (\"Whether to use this message or to use some other "
+"mechanism to login to the ACS is configurable on the SC.\")"
+msgstr ""
+
+#: main.py:522
+msgid "Patron Information"
+msgstr ""
+
+#: main.py:523
+msgid "This message is a superset of the Patron Status Request."
+msgstr ""
+
+#: main.py:530
+msgid "End Patron Session"
+msgstr ""
+
+#: main.py:531
+msgid "Device can send command to end patron session to server."
+msgstr ""
+
+#: main.py:538
+msgid "Item Information"
+msgstr ""
+
+#: main.py:539
+msgid "Device can request item information."
+msgstr ""
+
+#: main.py:546
+msgid "Item Status Update"
+msgstr ""
+
+#: main.py:547
+msgid "Device can update item status without a checkin or checkout action."
+msgstr ""
+
+#: main.py:554
+msgid "Hold"
+msgstr ""
+
+#: main.py:555
+msgid "Device can create, modify, or delete a hold."
+msgstr ""
+
+#: main.py:562
+msgid "SIP2 Supported Actions (autoconfigured special note)"
+msgstr ""
+
+#: main.py:566
+msgid ""
+"These three settings are real good candidates to circumvent the main problem "
+"of offline checkouts (network outage): a blocked user might borrow "
+"something. Were this settings available such a patron could be temporarily "
+"unblocked to process this checkout anyway when the connection is available "
+"again. Unfortunatley this app can't implement such a mechanism, because no "
+"available server supports this."
+msgstr ""
+
+#: main.py:570
+msgid "Offline ok"
+msgstr ""
+
+#: main.py:571
+msgid ""
+"ILS and SIP2 server support the off-line operation feature. The ILS must "
+"also support no block charge requests when it comes back on-line."
+msgstr ""
+
+#: main.py:578
+msgid "Block Patron"
+msgstr ""
+
+#: main.py:579
+msgid "Device can block patron account"
+msgstr ""
+
+#: main.py:586
+msgid "Patron Enable"
+msgstr ""
+
+#: main.py:587
+msgid "Device can unblock a patron."
+msgstr ""
+
+#: main.py:604
+msgid "Gossip Supported Actions"
+msgstr ""
+
+#: main.py:608
+msgid ""
+"These settings are not part of the SIP2 protocol definition. Thus they are "
+"not transmitted via a ACS Status Response (98). If you use Gossip, you have "
+"to check yourself, what policies are set."
+msgstr ""
+
+#: main.py:612
+msgid "[NOT IMPLEMENTED] Commit Reservation"
+msgstr ""
+
+#: main.py:613
+msgid ""
+"Shall reserved items be commited when returned (this usually will inform the "
+"next patron immedialtely that his reservation is available). May "
+"automatically be set to false if returning of items is not allowed."
+msgstr ""
+
+#: main.py:619
+msgid "[NOT IMPLEMENTED] Allow Third Party Renewal"
+msgstr ""
+
+#: main.py:620
+msgid ""
+"Allow anyone to renew an item, even if it is not held by the current logged "
+"in user (don't ask me, what's the point). May automatically be set to false "
+"if renewing isn't allowed at all."
+msgstr ""
+
+#: main.py:626
+msgid "[NOT IMPLEMENTED] Allow Subtotal Payment"
+msgstr ""
+
+#: main.py:627
+msgid "Is paying only some fee entries allowed?"
+msgstr ""
+
+#: main.py:633
+msgid "[NOT IMPLEMENTED] Allow Partial Fee Payment"
+msgstr ""
+
+#: main.py:634
+msgid "May even just a part of a fee entry be paid?"
+msgstr ""
+
+#: main.py:640
+msgid "[NOT IMPLEMENTED] Use additional languages"
+msgstr ""
+
+#: main.py:641
+msgid ""
+"The default language is set in the SIP2 (Server) part. Is Gossip set to "
+"switch to a different language upon request?"
+msgstr ""
+
+#: main.py:647
+msgid "[NOT IMPLEMENTED] Special message for returned reservations"
+msgstr ""
+
+#: main.py:648
+msgid ""
+"If set to true in Gossip, a custom message is shown when a reserved item is "
+"returned."
+msgstr ""
+
+#: main.py:654
+msgid "[NOT IMPLEMENTED] Server Provides Special Item Properties"
+msgstr ""
+
+#: main.py:655
+msgid ""
+"Gossip return addional item information (if currently checked out). Not used "
+"in this app."
+msgstr ""
+
+#: main.py:679
+msgid "This App"
+msgstr ""
+
+#: main.py:683
+#, fuzzy
+#| msgid "Autoconnect"
+msgid "Autologin"
 msgstr "Autom. verbinden"
 
-msgid "Connect"
+#: main.py:684
+msgid "Autologin when app starts?"
+msgstr ""
+
+#: selfcheck.py:84
+msgid "Connection failed. Please check log and config"
+msgstr ""
+
+#: selfcheck.py:90
+msgid "Cannot connect to server"
+msgstr ""
+
+#: selfcheck.py:99
+msgid "Login failed. Please check config"
+msgstr ""
+
+#: selfcheck.py:186
+#, fuzzy
+#| msgid "Connect"
+msgid "Disconnect"
 msgstr "Verbinden"
 
-msgid "Yes"
-msgstr ""
-
-msgid "No"
-msgstr ""
-
-msgid "Save"
-msgstr ""
-
-msgid "Load"
-msgstr ""
-
-msgid "Cancel"
-msgstr ""
-
-msgid "Choose a connection!"
-msgstr ""
-
-msgid "AYAB Knit Settings"
-msgstr ""
-
-msgid "Machine Type:"
-msgstr ""
-
-msgid "Connections:"
-msgstr ""
-
-msgid "left end needle"
-msgstr ""
-
-msgid "right end needle"
-msgstr ""
-
-msgid "Start Knitting!"
-msgstr ""
+#: selfcheck.py:186 selfcheck.py:191
+msgid "Connect"
+msgstr "Verbinden"
