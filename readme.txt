@@ -7,6 +7,8 @@ Prepare Python
         > "pip install https://github.com/kivy/kivy/zipball/master"
         > http://www.lfd.uci.edu/~gohlke/pythonlibs/#pygame "pygame‑1.9.3‑cp35‑cp35m‑win_amd64.whl"
             > "pip install E:\_incoming_Web\pygame-1.9.3-cp35-cp35m-win_amd64.whl"
+(3. Update kivy:
+    > pip3 install --upgrade kivy)
 
 Prepare Gossip
 0. TEMP Copy 

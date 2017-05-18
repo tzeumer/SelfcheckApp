@@ -17,6 +17,8 @@ READING FROM DEVICES
 
 # default kivy stuff
 from kivy.app import App
+#from kivy.config import Config
+from kivy.core.window import Window
 from kivy.lang import Builder
 from kivy.logger import Logger
 from kivy.properties import StringProperty
@@ -70,6 +72,9 @@ class SelfcheckApp(App):
         @ notes: custom window title: self.title = 'Gossip Client'
         """
         #config = self.config
+        #Config.set('graphics', 'width', '1000')
+        #Config.set('graphics', 'height', '800')
+        Window.size = (1200, 800)
 
         # Load custom style (for info section)
         Builder.load_file('style-override.kv')

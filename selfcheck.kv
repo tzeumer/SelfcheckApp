@@ -1,41 +1,65 @@
 #:import _ localization._
 
+<ItemEntry@BoxLayout>:
+    spacing: 10
+    padding: 10, 10, 10, 10
+    canvas:
+        Color:
+            rgba: 0.376, 0.475, 0.58, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    Label:
+        text: _('Title')
+        size_hint: 1.0, 1.0           
+        halign: 'left'
+        valign: 'top'                 
+    Label:
+        text: _('Message')
+        size_hint: .2, 1.0           
+    Button:
+        size_hint: .2, 1.0           
+        height: '48dp'
+        width: 100
+        text: _('Action')
+        on_press: root.parent.parent.parent.parent.parent.btn_get_item_information()
+        #on_press: app.root.ids.main_selfcheck.btn_get_item_information()
+                            
+
 <Selfcheck>:
+    id: main_selfcheck
     GridLayout:
-        rows: 2
+        rows: 3
         BoxLayout:
             padding: '2sp'
+            size_hint: 1, None
+            height: '45sp'
             canvas:
                 Color:
-                    rgba: 1, 1, 1, .6
+                    rgba: 1, .3, 1, .6
                 Rectangle:
                     size: self.size
                     pos: self.pos
-            size_hint: 1, None
-            height: '45sp'
-            Widget:
+            
             BoxLayout:
-                size_hint: None, 1
-                width: '150sp'
+                size_hint: 1, 1
                 Label:
                     text: _("Autoconnect")
                 CheckBox:
                     id: sip2_btn_autologin
                     active: False
                     size_hint_x: 1
-            Button:
-                id: btn_get_itemInformation
-                size_hint_y: None
-                height: '48dp'
-                text: _('TestButton')
-                on_press: root.btn_get_item_information()
-            ToggleButton:
-                id: tgl_btn_connection
-                size_hint_y: None
-                height: '48dp'
-                text: _('Connect')
-                on_press: self.text = 'Connecting ...'; root.status_toggle_btn(tgl_btn_connection, 'tgl_btn_connection')
-                group: 'test'
+                               
+                ToggleButton:
+                    id: tgl_btn_connection
+                    size_hint_x: None
+                    size_hint_y: None
+                    height: '48dp'
+                    width: 100
+                    text: _('Connect')
+                    on_press: self.text = 'Connecting ...'; root.status_toggle_btn(tgl_btn_connection, 'tgl_btn_connection')
+                    group: 'test'
+                
         BoxLayout:
             id: reactive_layout
             orientation: 'vertical' if self.width < self.height else 'horizontal'
@@ -57,11 +81,77 @@
                     text: _('Left')
 
             ScrollView:
-                id: scr_selfcheck_right
-                Label:
-                    id: scr_selfcheck_left
-                    text: _('Right')
+                id: item_list
+                GridLayout:
+                    id: item_entries
+                    cols: 1
+                    row_force_default: True
+                    row_default_height: 60
+                    #ItemEntry:
+                    #    id: test123
 
+        BoxLayout:
+            id: bl
+            padding: '2sp'
+            size_hint: 1, None
+            height: '45sp'
+            canvas:
+                Color:
+                    rgba: 1, .3, 1, .6
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+
+            Popup:
+                id: popup_password
+                title: _('Login with your library card')
+                size_hint: None, None
+                size: 700, 200
+                on_parent: if self.parent == bl: self.parent.remove_widget(self)
+                GridLayout:
+                    cols: 2
+                    rows: 3
+                    row_force_default: True
+                    row_default_height: 50
+                    Label:
+                        text: _('Library card')
+                        size_hint: .2, 1.0           
+                    TextInput:
+                        id: inp_library_card
+                        multiline:False
+                        write_tab: False
+                        font_size: 30
+                        on_text_validate: root.ids.inp_password.focus=True
+                    Label:
+                        text: _('Password')
+                        size_hint: .2, 1.0           
+                    TextInput:
+                        id: inp_password
+                        multiline:False
+                        write_tab: False
+                        font_size: 30
+                        password: True
+                        on_text_validate: root.btn_login()
+                    #Button:
+                    #    text: 'press to dismiss'
+                    #    on_release: popup_password.dismiss()
+            Button:
+                text: _('Login')
+                size_hint: None, 1
+                width: 200
+                on_release: root.ids.popup_password.open()
+            
+            BoxLayout:
+                size_hint: 0, 1
+                width: 400
+                Label:
+                    text: 'Barcode'
+                TextInput:
+                    id: inp_barcode
+                    multiline:False
+                    font_size: 20
+                    on_text_validate: root.get_barcode(inp_barcode)
+            
                     
 <Error>:
     BoxLayout:

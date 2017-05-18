@@ -1,6 +1,8 @@
 from kivy.app import App
+from kivy.clock import Clock
 from kivy.uix.screenmanager import Screen, SlideTransition
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.popup import Popup
 
 from localization import _
 
@@ -17,6 +19,9 @@ class Selfcheck(Screen):
     def __init__(self, **kwargs):
         super(Selfcheck, self).__init__(**kwargs)
         self.app = App.get_running_app()
+        
+        # class vars
+        self.item_stack = dict()
 
         self.ids.sip2_btn_autologin.active = self.app.config.getint('myAppSettings', 'autologin')
 
@@ -151,7 +156,7 @@ class Selfcheck(Screen):
         if (current_version != 'Gossip' or self.app.config.getint('sip2Rules', '10') == 0):
             self.app.config.set('sip2RulesGossip', 'provideItemProperties', 0)
 
-        pprint (self.wrapper._scStatus)
+        #pprint (self.wrapper._scStatus)
             
         # save the config, otherwise it will be reset to defaults on next app start
         self.app.config.write()  
@@ -173,7 +178,8 @@ class Selfcheck(Screen):
             blub = self.wrapper.sip_item_information('830$28479309')
             pprint (blub)
         except Exception as ex:
-            print(self.wrapper.return_log())
+            #print(self.wrapper.return_log())
+            print(ex)
                 
     def status_toggle_btn(self, btn, id):
         """
@@ -192,7 +198,88 @@ class Selfcheck(Screen):
             
         #print('button state is: {state}'.format(state=btn.state))
         #print('text input text is: {txt}'.format(txt=self.ids.tgl_btn_connection.text))
+
+    def get_barcode(self, value):
+        """
+        https://kivy.org/docs/api-kivy.uix.widget.html?highlight=ids#kivy.uix.widget.Widget.ids
+        https://stackoverflow.com/questions/30202801/how-to-access-id-widget-of-different-class-from-a-kivy-file-kv
+        !!! ARg - it DOES not work as I thought. IDs are static, keep track of dynamic ids via children
+        https://stackoverflow.com/questions/43704491/kivy-after-remove-widget-it-disappears-from-the-screen-but-stays-in-ids
+        Maybe like this?
+        https://gist.github.com/tshirtman/6767383
+        And children:
+        https://stackoverflow.com/questions/31639452/kivy-access-child-id
         
+        Finally the new RecycleView seems to be a perfect fit for such a dynamic 
+        list. However it is used...
+        https://kivy.org/docs/api-kivy.uix.recycleview.html
+        """
+        #print('User pressed enter in', instance)
+        barcode = value.text
+        is_new = True
+        
+        # Check if kv object with fixed id "item_entries" has child with barcode 
+        # as id. If we find something, remove it from list (it's like an RFID
+        # antenna says "item was removed by user"
+        for item in self.ids.item_entries.children:
+            if item.id == barcode:
+                self.ids.item_entries.remove_widget(item)
+                del self.item_stack[barcode]
+                is_new = False
+        
+        # If nothing was found, add the item to the list (it's a new one)
+        if is_new == True:
+            self.item = ItemEntry(id=barcode)
+            self.ids.item_entries.add_widget(self.item)
+            #for child in self.ids.item_entries.children:
+                #print(dir(child))
+                #print(child.id)         
+            book = self.wrapper.sip_item_information(barcode)
+            self.item_stack[barcode] = { "sip2": book, "rfid": 'lala'}
+            self.item_stack[barcode]["rfid"] = 'Got no antenna'
+            pprint (self.item_stack)
+            
+            #print (type(self.item_stack[barcode]['sip2']['variable']['AJ']))
+        
+        #self.ids.item_entries.ids.test123.ids.item_title.text = 'vla'
+        #for key, val in self.ids.items():
+        #    print("key={0}, val={1}".format(key, val))
+        for media in self.ids.item_entries.children:
+            if media.id == barcode:
+                print (media.children[0].text) #Button
+                print (media.children[1].text) #Message
+                print (media.children[2].text) #Title
+                media.children[2].text = str(self.item_stack[barcode]['sip2']['variable']['AJ'][0])
+                #for title in item.children:
+                #    print (title.id)
+                
+        # finally refocus on input field
+        # https://python4dads.wordpress.com/2014/08/10/resetting-a-text-input-kivy/
+        self.ids.inp_barcode.text = ''
+        def show_keyboard(event):
+            self.ids.inp_barcode.focus = True
+        Clock.schedule_once(show_keyboard)
+
+    def btn_login(self):
+        """
+        Probably validate input vs. some library card pattern
+        """
+        try:
+            print (self.ids.inp_library_card.text)
+            print (self.ids.inp_password.text)
+            self.ids.popup_password.dismiss()
+        except Exception as ex:
+            #print(self.wrapper.return_log())
+            print(ex)
+
+
+class ItemEntry(BoxLayout):
+    """ It's really defined in selfcheck.kv, but obviously this is not enough
+    understood through https://stackoverflow.com/a/28821239
+    """
+    #def __init__(self, *args, **kargs):
+    #    super(BoxLayout, self).__init__(*args, **kargs)
+    pass
 
 class xxx(Screen):
     def goLogin(self):
