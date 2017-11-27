@@ -1,4 +1,5 @@
 selfcheck.ini
+logs/*.log
 
 
 # TEMPLATE FROM GITHUB
