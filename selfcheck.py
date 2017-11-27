@@ -8,6 +8,7 @@ from localization import _
 
 # Gossip
 import os
+import time
 from pprint import pprint
 #import sys
 #sys.path.append(os.getcwd())
@@ -27,6 +28,7 @@ class Selfcheck(Screen):
 
         if (self.app.config.getint('myAppSettings', 'autologin') == 1):
             self.connect()
+
         
     def connect(self):
         """
@@ -68,7 +70,9 @@ class Selfcheck(Screen):
             'language'       : self.app.config.get('sip2Params', 'language'),
             'institutionId'  : self.app.config.get('sip2Params', 'institutionId'),
             'terminalPassword': self.app.config.get('sip2Params', 'terminalPassword'),
-            'scLocation'     : self.app.config.get('sip2Params', 'scLocation')
+            'scLocation'     : self.app.config.get('sip2Params', 'scLocation'),
+            'logfile_path'   : self.app.config.get('sip2Params', 'logfile_path'),
+            'loglevel'       : self.app.config.get('sip2Params', 'loglevel')
             #'patron'         : '12345',
             #'patronpwd'      : 'secret',
         }    
@@ -85,20 +89,16 @@ class Selfcheck(Screen):
             # green indicator: self.ids.balbalb 
             #pprint (self.wrapper.return_sc_status())
         except Exception as ex:
+            #print (type(ex).__name__)
             print(ex)
-            print(_("Connection failed. Please check log and config"))
+            print(_("Connection failed. Please check log and config and your connectivity"))
+            print ("GOING INTO OFFLINE MODE!")
             myAction = 'error'
-            return False
-        except SystemExit as ex:
-            # Real connection problem - set pretty (too?) hard with sys.exit in sip2 class
-            print(ex)        
-            self.ids.scr_selfcheck_left.text = _("Cannot connect to server")
             return False
         
         # Now Login
         try:
             self.wrapper.login_device(self.app.config.get('sip2Params', 'ils_user'), self.app.config.get('sip2Params', 'ils_pass'))
-            print (self.wrapper.return_log())
         except Exception as ex:
             print(ex)
             print(_("Login failed. Please check config"))
@@ -170,7 +170,6 @@ class Selfcheck(Screen):
     def disconnect(self):
         self.wrapper.disconnect()
         print (self.wrapper._connected)
-        print (self.wrapper.return_log())
         # red indicator: self.ids.balbalb
 
     def btn_get_item_information(self):
@@ -178,7 +177,6 @@ class Selfcheck(Screen):
             blub = self.wrapper.sip_item_information('830$28479309')
             pprint (blub)
         except Exception as ex:
-            #print(self.wrapper.return_log())
             print(ex)
                 
     def status_toggle_btn(self, btn, id):
@@ -263,13 +261,39 @@ class Selfcheck(Screen):
     def btn_login(self):
         """
         Probably validate input vs. some library card pattern
+        @future If Offlinemode is active, passwords should be ignored (because
+                SIP2 allows logins without password - so one less point of failure 
+                when doing checkins/checkouts after offline time. 
         """
+        username = self.ids.inp_library_card.text
+        password = self.ids.inp_password.text
+        self.ids.patron_login_error.text = ''
+        
+        # Password required?
+        if self.app.config.getint('sip2Rules', 'require_password') == 1 and password == '':
+            self.ids.patron_login_error.text = _('Password may not be empty')
+            return False
+                    
         try:
-            print (self.ids.inp_library_card.text)
-            print (self.ids.inp_password.text)
-            self.ids.popup_password.dismiss()
+            print (username)
+            print (password)
+            # Login successful?
+            status = self.wrapper.login_patron(username, password)
+            if status == True:
+                self.ids.inp_library_card.text = ''
+                self.ids.inp_password.text = ''
+                #self.ids.popup_password.dismiss()
+                pprint (self.wrapper.get_patron_status())
+            else:
+                print ('wrong pw')
+                self.ids.inp_password.text = ''
+                self.ids.inp_password.focus = True
+                self.ids.patron_login_error.text = _('Wrong credentials.')
+            
+            #print(self.wrapper.return_last_request())
+            #print(self.wrapper.return_last_response())
         except Exception as ex:
-            #print(self.wrapper.return_log())
+            print ('exception')
             print(ex)
 
 

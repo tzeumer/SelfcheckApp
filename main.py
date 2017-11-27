@@ -90,8 +90,19 @@ class SelfcheckApp(App):
         manager.add_widget(Login(name='login'))
         manager.add_widget(Connected(name='connected'))
         manager.add_widget(Error(name='error'))
-
+        
         return manager
+    
+    def on_start(self):
+        """ Open settings panel if app is not set to autologin. A selfcheck app
+        only makes sense in online mode (unless an offline mode is forced 
+        because of connection errors).
+        @todo Probably always switch to the autologin option
+        """
+        if (self.config.getint('myAppSettings', 'autologin') == 0):
+            self.open_settings()
+
+
 
     def get_application_config(self):
         """ Get location of configuration file(s)
@@ -117,6 +128,9 @@ class SelfcheckApp(App):
                   True/False. These setting are really boolean for
                   config.setdefaults: tlsEnable, tlsAcceptSelfsigned, withCrc,
                   withSeq; autologin
+        @note:    Gossip internally waits 5 seconds for responses from the ILS.
+                  Therefore a socketTimeout of 6 seconds is a very reasonable
+                  maximum.
         @todo:    Same stuff is repeatedly written (here, in the json files,
                   in the sip2/sip2wrapper classes and in message_lookup.py...).
                   Maybe everything could be mapped to each other better.
@@ -125,7 +139,7 @@ class SelfcheckApp(App):
             'hostName'          : 'xhar.gbv.de',
             'hostPort'          : 1294,
             'maxretry'          : 0,
-            'socketTimeout'     : 3,
+            'socketTimeout'     : 6,
             'tlsEnable'         : 1,
             'tlsAcceptSelfsigned' : 1,
             'hostEncoding'      : 'utf-8',
@@ -143,9 +157,12 @@ class SelfcheckApp(App):
 #            'patronpwd'        : 'secret',
             'version'           : 'Gossip',
             'ils_user'          : '',
-            'ils_pass'          : ''
+            'ils_pass'          : '',
+            'logfile_path'      : os.path.join(os.getcwd(), 'logs'),
+            'loglevel'          : 'WARNING'            
         })
         config.setdefaults('sip2Rules', {
+            'require_password': 1,
             '0'  : 1, '1'  : 1, '2'  : 1, '3'  : 1, '4'  : 1, '5'  : 1,
             '6'  : 1, '7'  : 1, '8'  : 1, '9'  : 1, '10' : 1, '11' : 1,
             '12' : 1, '13' : 1, '14' : 1, '15' : 1,
@@ -193,6 +210,11 @@ class SelfcheckApp(App):
         if section == 'sip2Params':
             print ("How to do a Selfcheck.disconnect() from here???")
             #super(Selfcheck, self).disconnect()
+            
+        if section == "myAppSettings":
+            if key == "autologin":
+                if value == 1:
+                    print ("How to do a Selfcheck.connect() from here - if not connected already???")
 
         if section == "My Label":
             if key == "text":
@@ -200,7 +222,7 @@ class SelfcheckApp(App):
             elif key == 'font_size':
                 self.root.ids.label.font_size = float(value)
         """
-        Impementation for language as by knittingpattern
+        Implementation for language as by knittingpattern
         When this method is called, it issued calls to change methods if they
         exist in this order:
 
@@ -428,6 +450,21 @@ class SelfcheckApp(App):
               "desc": _("Pretty unlikely you have to set anything here..."),
               "section": "sip2Params",
               "key": "terminalPassword"
+            },
+                    
+             { "type": "options",
+              "title": _("Loglevel"),
+              "desc": _("How much to log"),
+              "section": "sip2Params",
+              "key": "loglevel",
+              "options": ["DEBUG", "INFO", "WARNING", "ERROR", "CRITICAL"]
+            },
+
+            { "type": "string",
+              "title": _("Logfile"),
+              "desc": _("Folder where to save the logfile in"),
+              "section": "sip2Params",
+              "key": "logfile_path"
             }
         ]
         return json.dumps(settings)
@@ -448,6 +485,13 @@ class SelfcheckApp(App):
               "title": _("Settings are fetched when the connection to the server is established. You can disable settings, that the server supports (basically and policy) but that you don't want to use. But not vice versa (enable something the server does not support).")
             },
             
+            { "type": "bool",
+              "title": _("Require Patron Password"),
+              "desc": _("If disabled patrons can login without a password, using only their patron id"),
+              "section": "sip2Rules",
+              "key": "require_password"
+            },
+
             { "type": "bool",
               "title": _("Checkout"),
               "desc": _("Device can checkout items"),
@@ -685,8 +729,8 @@ class SelfcheckApp(App):
             },
         
             { "type": "bool",
-              "title": _("Autologin"),
-              "desc": _("Autologin when app starts?"),
+              "title": _("Autologin (Mandatory)"),
+              "desc": _("Autologin when app starts. When app is configured, this option must always be turned on for productive use (no point using this app offline. The app will throw you into the config screen on start, until it is turned on."),
               "section": "myAppSettings",
               "key": "autologin"
             }        

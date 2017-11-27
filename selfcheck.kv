@@ -106,32 +106,38 @@
                 id: popup_password
                 title: _('Login with your library card')
                 size_hint: None, None
-                size: 700, 200
+                size: 400, 250
                 on_parent: if self.parent == bl: self.parent.remove_widget(self)
+                on_open: root.ids.inp_library_card.focus = True
                 GridLayout:
-                    cols: 2
+                    cols: 1
                     rows: 3
-                    row_force_default: True
-                    row_default_height: 50
-                    Label:
-                        text: _('Library card')
-                        size_hint: .2, 1.0           
+                    #row_force_default: True
+                    #row_default_height: 50
+                    padding: (0,20,0,5)
+                    spacing: 15
+
                     TextInput:
                         id: inp_library_card
                         multiline:False
                         write_tab: False
                         font_size: 30
+                        hint_text: _('Library card')
                         on_text_validate: root.ids.inp_password.focus=True
-                    Label:
-                        text: _('Password')
-                        size_hint: .2, 1.0           
+
                     TextInput:
                         id: inp_password
                         multiline:False
                         write_tab: False
                         font_size: 30
                         password: True
+                        hint_text: _('Password')
                         on_text_validate: root.btn_login()
+
+                    Label:
+                        id: patron_login_error
+                        text: ''
+
                     #Button:
                     #    text: 'press to dismiss'
                     #    on_release: popup_password.dismiss()
